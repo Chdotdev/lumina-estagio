@@ -10,7 +10,7 @@ public class OrdemServico {
     private PrioridadeOS prioridadeOS;
     private LocalDateTime dataAbertura;
 
-    public OrdemServico(String id,String titulo, String descricao, PrioridadeOS prioridadeOS ) {
+    public OrdemServico(String id, String titulo, String descricao, PrioridadeOS prioridadeOS) {
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
@@ -19,7 +19,7 @@ public class OrdemServico {
         statusOS = StatusOS.ABERTA;
     }
 
-    public PrioridadeOS getPrioridade() {
+    public PrioridadeOS getPrioridadeOS() {
         return prioridadeOS;
     }
 
@@ -27,7 +27,7 @@ public class OrdemServico {
         return dataAbertura;
     }
 
-    public StatusOS getStatus() {
+    public StatusOS getStatusOS() {
         return statusOS;
     }
 
@@ -43,11 +43,15 @@ public class OrdemServico {
         return id;
     }
 
-    public void concluir(){
-        if (statusOS == StatusOS.CONCLUIDA){
-            throw new IllegalStateException("Essa tarefa já foi conluida e não está disponível para alteração");
+    public void concluir() {
+        if (statusOS == StatusOS.CONCLUIDA) {
+            throw new IllegalStateException("Serviço ID " + getId() + " já concluído");
         }
-        this.statusOS = statusOS.CONCLUIDA;
+        this.statusOS = StatusOS.CONCLUIDA;
     }
 
+    @Override
+    public String toString() {
+        return String.format("OS - %s | %s | Descrição: %s | %s | %s", id, titulo, descricao, prioridadeOS, statusOS);
+    }
 }
