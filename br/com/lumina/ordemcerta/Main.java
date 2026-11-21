@@ -15,12 +15,29 @@ public class Main {
 
         listaDeOrdens.listarOrdens();
 
-        try{
-            os1.concluir();
+        try {
             os1.concluir();
         } catch (IllegalStateException e) {
             System.out.println(e.getMessage());
         }
+
+        System.out.println("--------------------");
+        listaDeOrdens.listarOrdens();
+
+        try{
+            os2.iniciar();
+        } catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+        try{
+            os1.iniciar();
+        } catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println("--------------------");
 
         listaDeOrdens.listarOrdens();
 

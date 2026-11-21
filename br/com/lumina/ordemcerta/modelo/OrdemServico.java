@@ -50,6 +50,16 @@ public class OrdemServico {
         this.statusOS = StatusOS.CONCLUIDA;
     }
 
+    public void iniciar() {
+        if (statusOS == StatusOS.EM_ANDAMENTO) {
+            throw new IllegalStateException("Serviço ID " + getId() + " está em andamento");
+        }
+        if (statusOS == StatusOS.CONCLUIDA) {
+            throw new IllegalStateException("Serviço ID " + getId() + " já concluído");
+        }
+        this.statusOS = StatusOS.EM_ANDAMENTO;
+    }
+
     @Override
     public String toString() {
         return String.format("OS - %s | %s | Descrição: %s | %s | %s", id, titulo, descricao, prioridadeOS, statusOS);
